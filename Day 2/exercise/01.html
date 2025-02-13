@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Grid Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: 
+                "header header header"
+                "sidebar main extra"
+                "footer footer footer";
+            height: 100vh;
+            gap: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .header {
+            grid-area: header;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .main {
+            grid-area: main;
+            background-color: #ddd;
+            padding: 20px;
+        }
+        .extra {
+            grid-area: extra;
+            background-color: #bbb;
+            padding: 20px;
+        }
+        .footer {
+            grid-area: footer;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        @media (max-width: 860px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto auto;
+                grid-template-areas: 
+                    "header header"
+                    "sidebar main"
+                    "extra extra"
+                    "footer footer";
+                height: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto auto;
+                grid-template-areas: 
+                    "header"
+                    "sidebar"
+                    "main"
+                    "extra"
+                    "footer";
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="main">Main Content</div>
+        <div class="extra">Additional Content</div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+</html>

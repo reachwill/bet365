@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Containers with @container</title>
+    <style>
+        /* Global Page Layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Main Content Area */
+        .product-grid {
+            flex: 2;
+            container-type: inline-size;
+            container-name: product-container;
+            padding: 16px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 300px;
+        }
+
+        .grid-layout {
+            display: grid;
+            gap: 16px;
+        }
+
+        /* Product Container Queries */
+        @container product-container (max-width: 400px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @container product-container (min-width: 401px) and (max-width: 800px) {
+            .grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @container product-container (min-width: 801px) {
+            .grid-layout {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Sidebar */
+        .sidebar-grid {
+            flex: 1;
+            container-type: inline-size;
+            container-name: sidebar-container;
+            padding: 16px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 160px;
+        }
+
+        .sidebar-layout {
+            display: grid;
+            gap: 10px;
+        }
+
+        /* Sidebar Container Queries */
+        @container sidebar-container (max-width: 300px) {
+            .sidebar-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @container sidebar-container (min-width: 301px) and (max-width: 500px) {
+            .sidebar-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @container sidebar-container (min-width: 501px) {
+            .sidebar-layout {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* General Styling for Items */
+        .item {
+            background: #4a90e2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Main Product Grid -->
+        <div class="product-grid">
+            <h2>Products</h2>
+            <div class="grid-layout">
+                <div class="item">Product 1</div>
+                <div class="item">Product 2</div>
+                <div class="item">Product 3</div>
+                <div class="item">Product 4</div>
+                <div class="item">Product 5</div>
+                <div class="item">Product 6</div>
+                <div class="item">Product 7</div>
+                <div class="item">Product 8</div>
+            </div>
+        </div>
+
+        <!-- Sidebar Grid -->
+        <div class="sidebar-grid">
+            <h2>Sidebar</h2>
+            <div class="sidebar-layout">
+                <div class="item">Widget 1</div>
+                <div class="item">Widget 2</div>
+                <div class="item">Widget 3</div>
+                <div class="item">Widget 4</div>
+                <div class="item">Widget 5</div>
+                <div class="item">Widget 6</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

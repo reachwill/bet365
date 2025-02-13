@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'mixins';
+@import 'navbar';
+@import 'buttons';
+@import 'hero';
+@import 'functions';
+
+
+body {
+  font-family: $font-stack;
+  background: $primary-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+

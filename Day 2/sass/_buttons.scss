@@ -1,0 +1,8 @@
+.button-primary {
+    @include button-style($primary-color);
+  }
+  
+  .button-secondary {
+    @include button-style($secondary-color);
+  }
+  

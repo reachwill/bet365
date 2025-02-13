@@ -1,0 +1,169 @@
+<!--  Key Mobile-First Considerations in This Code:
+🔹 Viewport Meta Tag: Ensures proper scaling on mobile devices.
+🔹 Fluid Layout: Uses width: 100% and max-width for images & containers.
+🔹 Responsive Images: Uses srcset to serve higher-resolution images for high pixel-density screens (like Retina displays).
+🔹 Scalable Text: Uses rem, clamp(), and vw for font sizes instead of px.
+🔹 Touch-Friendly Design: Buttons have a minimum height & padding for tap targets.
+🔹 Progressive Enhancement: Uses media queries to enhance styles for larger screens. -->
+
+
+<!-- TO CHECK IN BROWSER
+ 
+window.matchMedia("(min-resolution: 2dppx)").matches
+
+Or open Sources in Dev tools and reload page 
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile-First Design Demo</title>
+    <style>
+        /* Mobile-First Design: Start with base styles for mobile devices */
+
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Header */
+        .header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Container */
+        .container {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        /* Responsive Image */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            /* Prevents oversized images */
+            border-radius: 8px;
+        }
+
+        /* Description text */
+        .description {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            /* Ensures readability across devices */
+            max-width: 500px;
+            margin: 20px auto;
+            color: #333;
+        }
+
+        /* Touch-friendly button */
+        .btn {
+            background: #FF9800;
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            /* Large enough for touch targets */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e68900;
+        }
+
+        /* Progressive Enhancement: Larger Screens (Tablets & Desktops) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+                margin: auto;
+            }
+
+            .description {
+                font-size: 1.5rem;
+                /* Larger text for bigger screens */
+            }
+
+            .btn {
+                font-size: 1.5rem;
+                padding: 20px 40px;
+            }
+        }
+
+        .bg-image {
+            background-image: url("https://placehold.co/600x400");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box{
+            width: 90%;
+            height: 200px;
+            margin: 20px auto;
+        }
+
+        /* For high-resolution printing (300 dpi and above) */
+        /* @media print and (min-resolution: 300dpi) {
+            .bg-image {
+                background-image: url("image-print.jpg");
+            }
+        } */
+
+        /* For screens with 120 dots per cm (120dpcm ≈ 304dpi ≈ 3.17x DPR) */
+        @media (resolution: 120dpcm) {
+            .bg-image {
+                background-image: url("https://placehold.co/600x400@3x");
+            }
+        }
+
+        /* For high-DPI screens (2x DPR and above, like Retina displays) */
+        @media (min-resolution: 2dppx) {
+            .bg-image {
+                background-image: url("https://placehold.co/600x400@2x");
+            }
+        }
+
+        /* For standard resolution screens (1x DPR) */
+        @media (resolution: 1x) {
+            .bg-image {
+                background-image: url("https://placehold.co/600x400");
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Mobile-First Design</h1>
+    </header>
+
+    <main class="container">
+        <picture>
+            <source srcset="https://placehold.co/600x400@2x" media="(min-resolution: 2dppx)">
+            <img src="https://placehold.co/600x400" alt="Responsive Image" class="responsive-img">
+        </picture>
+
+        <p class="description">
+            This layout is built using mobile-first design principles. Resize the window to see how the content adapts!
+        </p>
+
+        <button class="btn">Tap Me!</button>
+
+        <div class="box bg-image"></div>
+    </main>
+</body>
+
+</html>

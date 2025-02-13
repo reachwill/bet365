@@ -1,0 +1,65 @@
+// List of colors in HEX format
+$colors: #ff0000, #0000ff, #008000, #ffff00, #800080; // Red, Blue, Green, Yellow, Purple
+
+// Function to calculate perceived brightness (relative luminance)
+@function luminance($color) {
+  $red: red($color) / 255;
+  $green: green($color) / 255;
+  $blue: blue($color) / 255;
+
+  // Apply gamma correction
+  @if $red <= 0.03928 {
+    $red: $red / 12.92;
+  } @else {
+    $red: pow(($red + 0.055) / 1.055, 2.4);
+  }
+
+  @if $green <= 0.03928 {
+    $green: $green / 12.92;
+  } @else {
+    $green: pow(($green + 0.055) / 1.055, 2.4);
+  }
+
+  @if $blue <= 0.03928 {
+    $blue: $blue / 12.92;
+  } @else {
+    $blue: pow(($blue + 0.055) / 1.055, 2.4);
+  }
+
+  // Relative luminance formula
+  @return (0.2126 * $red) + (0.7152 * $green) + (0.0722 * $blue);
+}
+
+// Function to determine contrast color (black or white)
+@function contrast-color($bg-color) {
+  @if luminance($bg-color) > 0.5 {
+    @return black; // Light backgrounds → dark text
+  } @else {
+    @return white; // Dark backgrounds → light text
+  }
+}
+
+// Convert color to a valid class name by removing the "#"
+@function color-class-name($color) {
+  @return to-lower-case(str-slice("#{inspect($color)}", 2));
+}
+
+// Loop through colors and apply contrast styles
+@each $color in $colors {
+  $color-name: color-class-name($color); // Convert to valid class name
+
+  .color-#{$color-name} {
+    background-color: $color;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    color: contrast-color($color);
+
+    // Special case for red: make text bold
+    @if $color == #ff0000 {
+      font-weight: bold;
+    } @else {
+      font-weight: normal;
+    }
+  }
+}

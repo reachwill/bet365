@@ -1,0 +1,24 @@
+.color-p3-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  transition: background-color 0.3s ease;
+  margin: 30px 0;
+  background-color: #ed6041;
+}
+@supports (background-color: color(display-p3 1 0.341 0.2)) {
+  .color-p3-button {
+    background-color: color(display-p3 1 0.341 0.2);
+  }
+}
+.color-p3-button:hover {
+  background-color: darkorchid;
+}
+@supports (background-color: color(display-p3 0.32085 0.58799 0.83692)) {
+  .color-p3-button:hover {
+    background-color: color(display-p3 0.32085 0.58799 0.83692);
+  }
+}/*# sourceMappingURL=main.css.map */

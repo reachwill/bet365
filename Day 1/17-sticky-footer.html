@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Footer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .content {
+            flex: 1;
+            /* Takes up remaining space */
+            padding: 20px;
+        }
+
+        .footer {
+            /* flex: 0;
+            height: 1200px; */
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Page Content</h1>
+        <p>This is some content above the sticky footer. Scroll to see the footer stay at the bottom of the page.</p>
+        
+    </div>
+    <footer class="footer">
+        <p>Sticky Footer - Always at the bottom!</p>
+    </footer>
+</body>
+
+</html>

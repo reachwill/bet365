@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Glow Text Effect</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #0d0d0d;
+      font-family: Arial, sans-serif;
+    }
+
+    .neon-text {
+      font-size: 50px;
+      font-weight: bold;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+      filter: brightness(150%) blur(2px);
+      transition: filter 0.4s ease-in-out, text-shadow 0.4s ease-in-out;
+    }
+
+    /* Hover Effect */
+    .neon-text:hover {
+      filter: brightness(200%) blur(0);
+      text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc, 0 0 60px #00ffcc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="neon-text">Neon Glow</h1>
+
+</body>
+</html>

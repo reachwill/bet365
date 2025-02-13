@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 & CSS Fundamentals</title>
+    <style>
+        /* CSS Fundamentals */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        header,
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background: #444;
+            padding: 0.5em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        section {
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #333;
+        }
+
+        aside {
+            background: #ddd;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        .p-style-1{
+            color: rgb(9, 138, 237);
+        }
+
+        #main-p{
+            color: rgb(241, 27, 209);
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Semantic HTML Structure -->
+    <header>
+        <h1>Welcome to HTML5 & CSS Fundamentals</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section id="introduction">
+            <h1>Introduction</h1>
+            <p>This page demonstrates proper use of HTML5 semantic elements.</p>
+        </section>
+        <section id="articles">
+            <article id="about">
+                <h1>About HTML5</h1>
+                <p class="p-style-1" id="main-p">HTML5 introduced new semantic elements that help structure web pages more meaningfully.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto atque neque dolores quia odit, aperiam
+                    ab minima cumque. Praesentium minus omnis dignissimos commodi illum unde consequuntur consequatur et
+                    laborum. Culpa.</p>
+            </article>
+        </section>
+        <section id="features">
+            <h1>HTML5 Features</h1>
+            <p  class="p-style-1">Some new elements include:</p>
+            <ul>
+                <li><code>&lt;header&gt;</code>: Defines introductory content.</li>
+                <li><code>&lt;footer&gt;</code>: Represents footer section.</li>
+                <li><code>&lt;article&gt;</code>: Self-contained content.</li>
+                <li><code>&lt;section&gt;</code>: Groups related content.</li>
+                <li><code>&lt;nav&gt;</code>: Contains navigation links.</li>
+            </ul>
+        </section>
+        <aside>
+            <h2>Related Information</h2>
+            <p>Aside content can be used for additional information such as related links, ads, or callout boxes.</p>
+        </aside>
+        <figure>
+            <img src="https://picsum.photos/300/200?grayscale" alt="Example Image">
+            <figcaption>An example of an HTML5 figure element with an image and caption.</figcaption>
+        </figure>
+    </main>
+    <footer>
+        <p>&copy; 2025 HTML5 & CSS Workshop</p>
+    </footer>
+</body>
+
+</html>

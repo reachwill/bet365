@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG & Canvas Animation</title>
+</head>
+<body>
+    <svg width="400" height="400">
+        <circle id="circle" cx="150" cy="150" r="30" fill="blue" />
+    </svg>
+    <canvas id="canvas" width="400" height="100" style="border:1px solid #000;"></canvas>
+    <script>
+        // 1. Manipulating SVG Elements with JavaScript
+        const circle = document.getElementById("circle");
+        circle.setAttribute("fill", "blue");
+        circle.setAttribute("cx", "150");
+        
+        // 2. Interactive Animation (Hover Effect)
+        circle.addEventListener("mouseenter", () => {
+            circle.setAttribute("fill", "red");
+        });
+        circle.addEventListener("mouseleave", () => {
+            circle.setAttribute("fill", "blue");
+        });
+        
+        // 3. Animating SVG with JavaScript
+        let angle = 0;
+        function animate() {
+            angle += 2;
+            let x = 150 + 50 * Math.cos(angle * Math.PI / 180);
+            let y = 150 + 50 * Math.sin(angle * Math.PI / 180);
+            circle.setAttribute("cx", x);
+            circle.setAttribute("cy", y);
+            requestAnimationFrame(animate);
+        }
+        animate();
+        
+        // 4. JSON Controlled Animation
+        const animationData = [
+            { cx: 100, cy: 100, fill: "green" },
+            { cx: 200, cy: 200, fill: "orange" },
+            { cx: 300, cy: 100, fill: "purple" }
+        ];
+        let index = 0;
+        function updateFromJSON() {
+            const data = animationData[index];
+            circle.setAttribute("cx", data.cx);
+            circle.setAttribute("cy", data.cy);
+            circle.setAttribute("fill", data.fill);
+            index = (index + 1) % animationData.length;
+            setTimeout(updateFromJSON, 1000);
+        }
+        updateFromJSON();
+        
+        // 5. HTML Canvas Drawing & Animation
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        let posX = 0;
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.arc(posX, 50, 20, 0, Math.PI * 2);
+            ctx.fill();
+            posX += 2;
+            if (posX > canvas.width) posX = 0;
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Ball Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: green;
+        }
+        canvas {
+            border: 5px solid white;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/d/de/Football_field.svg') no-repeat center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="soccerField" width="600" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById("soccerField");
+        const ctx = canvas.getContext("2d");
+        
+        const ball = {
+            x: 100,
+            y: 100,
+            radius: 15,
+            dx: 4,
+            dy: 3
+        };
+        
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "white";
+            ctx.fill();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.closePath();
+        }
+        
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+            
+            if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width) {
+                ball.dx *= -1;
+            }
+            if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.dy *= -1;
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        update();
+    </script>
+</body>
+</html>

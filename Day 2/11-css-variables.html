@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Variables Example</title>
+  <style>
+    /* Define CSS variables */
+    :root {
+      --primary-color: rgb(52, 152, 219);
+      --secondary-color: #2ecc71;
+      --font-family: 'Arial', sans-serif;
+      --font-size: 16px;
+      --padding: 20px;
+      --border-radius: 8px;
+      --margin: 20px;
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-size: var(--font-size);
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .box {
+      background-color: var(--primary-color);
+      color: white;
+      padding: var(--padding);
+      margin: var(--margin);
+      border-radius: var(--border-radius);
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .box h1 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .box p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--secondary-color);
+      border: none;
+      border-radius: var(--border-radius);
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Component 1</h1>
+      <p>This is an example of CSS variables.</p>
+      <button class="button">Click Me</button>
+    </div>
+    <div class="box">
+      <h1>Component 2</h1>
+      <p>This is an example of CSS variables.</p>
+      <button class="button">Click Me</button>
+    </div>
+  </div>
+</body>
+</html>

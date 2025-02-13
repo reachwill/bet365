@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Overall page container */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            /* Sidebar 1/4, Main content 3/4 */
+            /* grid-template-rows: 1fr 1fr; */
+            grid-template-rows: 1fr auto;
+            /* Header, content, footer */
+            grid-template-areas:
+                "sidebar main"
+                "videos videos";
+            /* height: 91vh; */
+            grid-gap: 20px;
+            /* max-width: 1400px; */
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            /* grid-area: header; */
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            /* grid-area: footer; */
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Main content */
+        .main-content {
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            /* Stack the content vertically */
+            gap: 20px;
+            /* Add spacing between articles */
+        }
+
+        .video-content {
+            grid-area: videos;
+            background-color: aquamarine;
+            padding: 10px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Articles section with Flexbox */
+        .articles {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* Individual article */
+        .article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            width: 49%;
+            transition: all .5s;
+        }
+
+        .card {
+            background-color: white;
+            min-width: 200px;
+            padding: 10px;
+            text-align: center;
+            transition: all .5s;
+        }
+
+        .card h2{
+            margin: 0 0 5px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                /* Stack sidebar and content vertically on small screens */
+                grid-template-areas:
+                    "main"
+                    "videos"
+                    "sidebar";
+                    grid-template-rows: auto;
+            }
+
+            .articles {
+                flex-direction: column;
+            }
+
+            .article{
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 1560px) {
+            .article{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">Blog Header</header>
+    <div class="container">
+        <aside class="sidebar">Sidebar</aside>
+        <div class="main-content">
+            <section class="articles">
+                <!-- article.article*12>h2{Article $}+p>lorem -->
+                <article class="article">
+                    <h2>Article 1</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit voluptates temporibus ratione voluptatibus ex? Aspernatur voluptates, ad a harum sint earum aliquam mollitia, delectus amet accusantium repudiandae eos! Ipsum, esse!</p>
+                </article>
+                <article class="article">
+                    <h2>Article 2</h2>
+                    <p>Voluptate velit magni quia animi expedita nulla reiciendis, nam architecto labore soluta accusantium quibusdam a asperiores eius odit obcaecati minus delectus! Maiores nobis accusamus quod laudantium quia nihil, officiis ipsum!</p>
+                </article>
+                <article class="article">
+                    <h2>Article 3</h2>
+                    <p>Voluptas maiores quibusdam, ut incidunt iure labore consequuntur. Ipsum dicta officiis atque harum eius repudiandae nihil animi quidem voluptas blanditiis autem quo fugit reiciendis, nostrum alias aut. Voluptates, repellat perferendis.</p>
+                </article>
+                <article class="article">
+                    <h2>Article 4</h2>
+                    <p>Velit a at dicta accusamus tempora explicabo id beatae consectetur sunt, voluptatibus ratione eligendi eveniet officiis atque consequuntur odit? Eligendi error dolor recusandae perferendis molestiae animi rem harum eius aliquid.</p>
+                </article>
+                <article class="article">
+                    <h2>Article 5</h2>
+                    <p>Consectetur magni sunt, porro, repellat ipsum sequi illum iusto ipsa earum ipsam aut exercitationem voluptates commodi cupiditate consequuntur enim perspiciatis repellendus, distinctio hic asperiores in! Nulla natus quae soluta obcaecati?</p>
+                </article>
+                <article class="article">
+                    <h2>Article 6</h2>
+                    <p>Maxime culpa ipsa perferendis minima sunt nobis vitae pariatur accusantium beatae fugit, blanditiis animi id cupiditate. Sint alias, quas possimus illo magni suscipit natus enim voluptatem, eligendi quod nobis temporibus.</p>
+                </article>
+                <article class="article">
+                    <h2>Article 7</h2>
+                    <p>Nam excepturi, laudantium non vel aliquid doloribus tempore architecto hic ut perspiciatis eligendi adipisci illum neque velit repudiandae at aut, et earum! Accusantium, ad explicabo in culpa qui mollitia omnis!</p>
+                </article>
+                <article class="article">
+                    <h2>Article 8</h2>
+                    <p>Ipsam velit dignissimos distinctio animi et porro numquam fugit repudiandae a deleniti natus tenetur suscipit dolore sit sunt praesentium pariatur quisquam ratione doloribus voluptates, perferendis earum iusto veritatis. Eveniet, delectus!</p>
+                </article>
+                <article class="article">
+                    <h2>Article 9</h2>
+                    <p>Quia ex laudantium expedita aliquam minima illum amet, officiis nisi enim quasi ab magni tenetur perspiciatis architecto molestiae nostrum dolorum atque, dolor nulla consequatur? Pariatur quaerat architecto labore quam voluptatibus.</p>
+                </article>
+                <article class="article">
+                    <h2>Article 10</h2>
+                    <p>Sequi, excepturi possimus non dicta quia porro dolorum eaque sapiente natus, numquam recusandae enim incidunt. Dolorem veritatis est maxime quas neque tempora sequi. Dolorem quibusdam iste, fugit totam aut harum?</p>
+                </article>
+                <article class="article">
+                    <h2>Article 11</h2>
+                    <p>Facilis laborum repudiandae magni animi odio iste eaque blanditiis quod quasi! Commodi ex nesciunt animi eligendi non esse, perspiciatis molestias ipsam, facilis odit omnis, ea sunt explicabo iusto ullam tempore?</p>
+                </article>
+                <article class="article">
+                    <h2>Article 12</h2>
+                    <p>Consequuntur odio quis vel commodi dicta, ex natus placeat soluta laborum modi ullam beatae magnam. Numquam libero, at ea dolore optio hic minima, culpa aspernatur, eum unde facere qui. Nemo!</p>
+                </article>
+            </section>
+        </div>
+        <div class="video-content">
+            <!-- div.card*12>h2{Video Title}+img[src="https://picsum.photos/200/200?random={$}"] -->
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={1}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={2}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={3}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={4}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={5}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={6}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={7}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={8}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={9}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={10}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={11}" alt="">
+            </div>
+            <div class="card">
+                <h2>Video Title</h2>
+                <img src="https://picsum.photos/200/200?random={12}" alt="">
+            </div>
+        </div>
+    </div>
+    <footer class="footer">Footer Content</footer>
+
+</body>
+
+</html>

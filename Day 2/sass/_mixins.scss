@@ -1,0 +1,15 @@
+@mixin button-style($bg-color) {
+    background: $bg-color;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  
+    &:hover {
+      background: darken($bg-color, 10%);
+    }
+  }
+  

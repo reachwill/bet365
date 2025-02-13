@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Main container grid */
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            /* Sidebar 1/4th, Content 3/4th */
+            grid-template-rows: auto 1fr auto;
+            /* Header, content area, footer */
+            grid-template-areas:
+                "header header"
+                "sidebar content"
+                "footer footer";
+            height: 100vh;
+        }
+
+        /* Header and footer styling */
+        .header {
+            grid-area: header;
+            /* Place in header area */
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .footer {
+            grid-area: footer;
+            /* Place in footer area */
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            grid-area: sidebar;
+            /* Place in sidebar area */
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Content grid */
+        .content {
+            grid-area: content;
+            /* Place in content area */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 equal columns */
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        /* Article styling inside content */
+        .article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        @media (max-width: 860px) {
+            .content {
+                grid-template-columns: 1fr;
+                /* Single column for articles */
+            }
+        }
+
+        /* Media queries for smaller screens (optional for responsiveness) */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                /* Stack all elements vertically */
+                grid-template-areas:
+                    "header"
+                    "content"
+                    "sidebar"
+                    "footer";
+            }
+
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <header class="header">Header</header>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">
+            <section class="article">Article 1</section>
+            <section class="article">Article 2</section>
+            <section class="article">Article 3</section>
+        </div>
+        <footer class="footer">Footer</footer>
+    </div>
+
+
+</body>
+
+</html>

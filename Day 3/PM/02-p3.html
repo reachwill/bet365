@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>color(display-p3) Demo</title>
+  <link rel="stylesheet" href="sass/main.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    /* .color-p3-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: color(display-p3 1 0 0);
+      color: white;
+      transition: background-color 0.3s ease;
+      margin: 30px 0;
+    }
+
+    .color-p3-button:hover {
+      background-color: color(display-p3 0 1 0);
+    } */
+
+    /* Apply color(display-p3) only in browsers that support it */
+    /* SEE SASS FILE */
+    /* @supports (background-color: color(display-p3 1 0.341 0.2)) {
+      .color-box {
+        background-color: color(display-p3 1 0.341 0.2); 
+      }
+    } */
+
+    a:visited {
+      color: color(display-p3 0.32085 0.58799 0.83692);
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <a href="https://apps.colorjs.io/picker/p3">Colour Converters</a>
+  </div>
+
+  <button class="color-p3-button">Hover Me</button>
+</body>
+
+</html>

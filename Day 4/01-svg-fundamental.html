@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Animations with CSS</title>
+    <style>
+        /* Basic SVG styling */
+        svg {
+            width: 200px;
+            display: block;
+            margin: 50px auto;
+        }
+
+        /* Drawing effect using stroke-dasharray and stroke-dashoffset */
+        .draw path {
+            stroke: #ff5733;
+            stroke-width: 4;
+            fill: none;
+            stroke-dasharray: 250;
+            stroke-dashoffset: 250;
+            animation: draw 2s linear forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 10;
+            }
+        }
+
+        /* Hover transition for color change */
+        .hover-effect circle {
+            fill: #3498db;
+            transition: fill 0.5s ease;
+        }
+        .hover-effect:hover circle {
+            fill: #e74c3c;
+        }
+
+        /* Animating elements with transition */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #2ecc71;
+            margin: 20px auto;
+            transition: transform 0.5s ease-in-out;
+        }
+        .box:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Basics of SVG Structure -->
+    <svg width="200" height="200">
+        <rect x="10" y="10" width="100" height="100" fill="blue" stroke="black" stroke-width="3"/>
+        <circle cx="50" cy="80" r="40" fill="red" stroke="black" stroke-width="3"/>
+        <!-- <line x1="10" y1="150" x2="190" y2="150" stroke="green" stroke-width="3"/> -->
+        <!-- <text x="50" y="180" font-size="20" fill="black">Hello SVG</text> -->
+    </svg>
+
+    <!-- SVG Drawing Animation -->
+    <svg class="draw" viewBox="0 0 100 100">
+        <path d="M10,80 Q50,10 90,80" />
+    </svg>
+
+    <!-- SVG Hover Effect -->
+    <svg class="hover-effect" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" />
+    </svg>
+
+    <!-- Transition Animation on HTML Element -->
+    <div class="box"></div>
+</body>
+</html>

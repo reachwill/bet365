@@ -1,0 +1,31 @@
+.hero {
+    background: url('https://picsum.photos/600/600?grayscale') no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+    .hero-text {
+      color: $text-color;
+      background-color: $faded-bg;
+      padding: 2rem;
+      border-radius: dynamic-radius(200px, 100px);
+    //   border-radius: dynamic-radius(200px, 100px);
+  
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+  
+      .cta-button {
+        @include button-style($secondary-color);
+      }
+    }
+  }
+  

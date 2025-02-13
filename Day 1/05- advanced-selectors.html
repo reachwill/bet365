@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Selectors</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper {
+            max-width: 400px;
+            padding: 10px;
+        }
+
+        /* Advanced CSS Selectors */
+        /* :not() - Exclude specific elements */
+        /* p:not(.special) {
+            color: blue;
+        } */
+
+        /* :nth-child() - Select elements based on position */
+        li:nth-child(odd) {
+            background-color: lightgray;
+        }
+
+        li::after {
+            content: ' -> ';
+            font-weight: bold;
+        }
+
+        /* :has() - Select parent elements containing a specific child (supported in modern browsers) */
+        div:has(span.highlight) {
+            border: 2px solid red;
+        }
+
+        /* :is() - Adjust specificity */
+        /* .box:is(.primary, .secondary) {
+            padding: 10px;
+            border-radius: 5px;
+        } */
+
+        /* :where() - Zero specificity */
+        /* :where(.container p) {
+            font-size: 16px;
+        } */
+
+        /* Combination selectors and pseudo-elements */
+        /* Child combinator (>) */
+        .nav>li {
+            list-style: none;
+        }
+
+        /* Adjacent sibling (+) */
+        h2+p {
+            font-style: italic;
+        }
+
+        /* General sibling (~) */
+        .note~p {
+            color: green;
+        }
+
+        /* Pseudo-elements */
+        p::first-letter {
+            font-size: 1.2em;
+            color: red;
+        }
+
+        
+
+        /* Debugging specificity issues */
+        .btn {
+            background-color: blue !important;
+            /* Overrides other rules */
+        }
+
+        button.btn:hover {
+            background-color: rgb(38, 235, 172);
+            /* Hover state */
+        }
+
+        #unique-btn {
+            background-color: green;
+            /* Higher specificity than .btn */
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="wrapper">
+
+
+        <p class="special">This paragraph is special.</p>
+        <p>This paragraph is not special.</p>
+
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+
+        <div>
+            <span class="highlight">Highlighted span inside div</span>
+        </div>
+        <div>
+            Regular div content.
+        </div>
+
+        <div class="box primary">Primary Box</div>
+        <div class="box secondary">Secondary Box</div>
+
+        <div class="container">
+            <p>Container paragraph.</p>
+        </div>
+
+        <ul class="nav">
+            <li>Nav Item 1</li>
+            <li>Nav Item 2</li>
+        </ul>
+
+        <h2>Heading</h2>
+        <p>Paragraph after heading.</p>
+
+        <p>A paragraph before the note.</p>
+        <p class="note">This is a note.</p>
+        <p>Another paragraph after the note.</p>
+        <p>Another paragraph after the note.</p>
+
+        <button class="btn">Click Me</button>
+        <button id="unique-btn" class="btn">Unique Button</button>
+    </div>
+</body>
+
+</html>

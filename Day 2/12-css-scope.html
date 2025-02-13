@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scoped vs Unscoped CSS Example</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    /* Unscoped styles affecting all cards */
+    .card {
+      background-color: #ffeb3b; /* Yellow background affecting both cards */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      color: #f44336; /* Red text color for all card titles */
+    }
+
+    .card p {
+      color: #000; /* Black text color for all paragraphs */
+    }
+
+    .card button {
+      background-color: #2196f3; /* Blue button for all cards */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #1976d2;
+    }
+
+    /* Scoped styles for scoped card */
+    @scope .scoped-card {
+      background-color: #fff; /* White background only for scoped cards */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    @scope .scoped-card h2 {
+      color: #4CAF50; /* Green text color for scoped card titles */
+    }
+
+    @scope .scoped-card p {
+      color: #555; /* Gray text color for scoped card paragraphs */
+    }
+
+    @scope .scoped-card button {
+      background-color: #4CAF50; /* Green button for scoped card */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @scope .scoped-card button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Scoped vs Unscoped CSS Example</h1>
+
+  <div class="card">
+    <h2>Unscoped Card</h2>
+    <p>This card has unscoped styles, which apply globally and affect all cards on the page.</p>
+    <button>Click Me</button>
+  </div>
+
+  <div class="scoped-card">
+    <h2>Scoped Card</h2>
+    <p>This card has scoped styles applied, which do not affect other elements on the page.</p>
+    <button>Click Me Too</button>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>color-mix() Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    .color-mix-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: color-mix(in srgb, #4c90e3 60%, #2c3e50);
+      color: white;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .color-mix-button:hover {
+      background-color: color-mix(in srgb, #4c90e3 100%, #2c3e50);
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <button class="color-mix-button">Hover Me</button>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glass Morphism Effect</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url("https://picsum.photos/id/2/1000/1000") no-repeat center/cover;
+    }
+
+    .glass-card {
+      width: 300px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px) brightness(80%);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: backdrop-filter 0.5s ease, background 0.5s ease;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Hover Effect */
+    .glass-card:hover {
+      backdrop-filter: blur(15px) brightness(90%);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .glass-card h2 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h2>Glass Effect</h2>
+    <p>Hover to enhance the blur effect.</p>
+  </div>
+
+</body>
+</html>

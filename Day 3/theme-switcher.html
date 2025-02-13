@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+    <style>
+        :root {
+            --background-color-light: white;
+            --color-light: black;
+            --background-color-dark: black;
+            --color-dark: white;
+        }
+
+        body {
+            background-color: var(--background-color-light);
+            color: var(--color-light);
+        }
+
+        .dark-theme {
+            background-color: var(--background-color-dark);
+            color: var(--color-dark);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: var(--background-color-dark);
+                color: var(--color-dark);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Switch Themes</h1>
+    <button onclick="switchTheme('light')">Light Theme</button>
+    <button onclick="switchTheme('dark')">Dark Theme</button>
+
+    <script>
+        function switchTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check and apply saved theme on page load
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            switchTheme(savedTheme);
+        };
+    </script>
+</body>
+
+</html>

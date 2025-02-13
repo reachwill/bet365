@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Fundamentals</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            height: 300px;
+            border: 2px solid #333;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+
+        .item {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #787171;
+        }
+
+        
+
+        /* .item:nth-child(1) { background: #3498db; order: 1; } */
+        /* .item:nth-child(2) { background: #3498db; order: 1; } */
+        .top .item {
+            background: #3498db;
+            flex: 1;
+        }
+
+        .top .item:nth-child(2) {
+            background: #e74c3c;
+            flex: 3;
+            /* order: 4;
+            align-self: flex-end; */
+        }
+
+        /* .item:nth-child(3) { background: #2ecc71; align-self: flex-end; } */
+        /* .item:nth-child(4) { background: #f39c12; } */
+
+        .bottom .item {
+            background: #2ecc71;
+            flex: 1;
+        }
+
+        .bottom .item:nth-child(2) {
+            background: #f39c12;
+            /* grow shrink basis */
+            flex-basis: 400px;
+            flex-grow: 2;
+            flex-shrink: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Flexbox Fundamentals Demo</h2>
+    <div class="flex-container top">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+
+    <div class="flex-container bottom">
+        <div class="item" >Item 1</div>
+        <div class="item" >Item 2</div>
+        <div class="item" >Item 3</div>
+    </div>
+    <!-- <div class="flex-container bottom">
+        <div class="item" style="flex-basis: 150px; flex-grow: 1; flex-shrink: 1;">Item 1</div>
+        <div class="item" style="flex-basis: 200px; flex-grow: 2; flex-shrink: 1;">Item 2</div>
+        <div class="item" style="flex-basis: 100px; flex-grow: 1; flex-shrink: 2;">Item 3</div>
+    </div> -->
+    <!-- 
+    Item 1 has a flex-basis of 150px, a flex-grow of 1, and a flex-shrink of 1. This means it will grow to fill available space, and shrink if needed.
+    Item 2 has a flex-basis of 200px, a flex-grow of 2, and a flex-shrink of 1. This one will grow more quickly than the others.
+    Item 3 has a flex-basis of 100px, a flex-grow of 1, and a flex-shrink of 2. This one is smaller to start and will shrink more if there’s not enough space.
+    -->
+</body>
+
+</html>

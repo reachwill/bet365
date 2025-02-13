@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             background-color: #efefef;
+            /*display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5f5; */
+        }
+
+        .product-card {
+            background: white;
+            width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            
+        }
+
+        .product-card__image {
+            /* width: 80px; */
+            /* margin: 0 auto 10px;
+            display: block; */
+        }
+
+        .product-card__title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .product-card__subtitle {
+            font-size: 12px;
+            color: grey;
+            margin-bottom: 10px;
+        }
+
+        .product-card__price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-card__description {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-card__like-button {
+            background: #ddd;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .product-card__like-button:hover {
+            background: #ccc;
+        }
+
+        .product-card--liked{
+            border:1px solid rgb(8, 196, 86);
+        }
+
+        .product-card__like-button--liked{
+            background-color: rgb(8, 196, 86);
+        }
+
+        .product-card__like-button--liked:after{
+            content: 'D';
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="product-card product-card--liked">
+        <img src="https://picsum.photos/200/300?grayscale" alt="Single Toilet Roll" class="product-card__image">
+        <div class="product-card__content">
+            <h2 class="product-card__title">SINGLE TOILET ROLL</h2>
+            <p class="product-card__subtitle">POPULAR SELLER</p>
+            <p class="product-card__price">£9.99</p>
+            <p class="product-card__description">
+                This is a luxury, quilted, 3-ply toilet roll with aloe vera for the smoothest wipe possible.
+                No animals were harmed in the making or testing of this product.
+                Due to high demand, limited to 2 per order.
+            </p>
+            <button class="product-card__like-button product-card__like-button--liked">LIKE</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

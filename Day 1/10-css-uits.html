@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CSS Units Demo</title>
+    <style>
+        /* General Reset */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+
+        /* Container styles */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: aliceblue;
+            /* Full height of the viewport */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive heading using vw */
+        .title {
+            font-size: 3rem;
+            /* font-size: 10vw; */
+            /* 10% of the viewport width */
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive paragraph using vh */
+        .description {
+            font-size: 4vh;
+            /* 4% of the viewport height */
+            max-width: 800px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Button styling */
+        .resize-btn {
+            padding: 12px 24px;
+            font-size: 2rem;
+            cursor: pointer;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        .resize-btn:hover {
+            background-color: #0b7dda;
+        }
+
+        /* Using clamp() for a responsive font-size */
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            /* Minimum of 1rem, scaling with 5vw, but max 3rem */
+            margin-bottom: 15px;
+            color: #f4f3f1;
+        }
+
+        /* Using min() for responsive width and padding */
+        .card {
+            width: min(80%, 800px);
+            height: 200px;
+            /* The width will be 80% of the parent, but no more than 500px */
+            padding: min(20px, 5vw);
+            /* The padding will be 20px or 5% of the viewport width, whichever is smaller */
+            background-color: #FFC107;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        /* Using max() for responsive button size */
+        .large-btn {
+            font-size: max(1.5rem, 4vw);
+            /* The font size will be at least 1.5rem, but can scale with 4vw */
+            padding: max(10px, 2vw);
+            /* Padding will be at least 10px, but scale with viewport width */
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        /* Hover effect for large button */
+        .large-btn:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1 class="title">Responsive Heading</h1>
+        <p class="description">This paragraph demonstrates the use of modern CSS units like vw, vh, clamp, min(),
+            and
+            max(). Resize the window to see how the elements adjust!</p>
+        <button class="resize-btn">Resize Button</button>
+
+        <div class="card">
+            <h2>Card Title</h2>
+        </div>
+
+
+        <button class="large-btn">Large Button</button>
+
+    </div>
+</body>
+
+</html>
