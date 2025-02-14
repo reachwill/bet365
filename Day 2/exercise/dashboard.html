@@ -119,6 +119,7 @@
                 grid-template-rows: auto 1fr;
                 /* Auto height for sidebar */
                 grid-template-areas:
+                    "header"
                     "sidebar"
                     "main-content";
             }
@@ -162,14 +163,15 @@
             </nav>
         </div>
 
+        <header>
+            <h1>Welcome, User</h1>
+            <div class="user-info">
+                <span>Profile</span>
+                <span>Notifications</span>
+            </div>
+        </header>
         <div class="main-content">
-            <header>
-                <h1>Welcome, User</h1>
-                <div class="user-info">
-                    <span>Profile</span>
-                    <span>Notifications</span>
-                </div>
-            </header>
+            
 
             <div class="cards">
                 <div class="card">Card 1</div>

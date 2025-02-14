@@ -195,31 +195,21 @@
             transition: all 0.3s ease;
         }
 
-        @container myContainer(width < 800px) {
-            /* .parent:after {
-                content: '< 800px'
-            } */
+        @container (max-width: 700px) {
 
             .child {
-                width: 33%;
-                background-color: #084d86;
-                padding: 40px;
+                width: 50%;
+                background-color: #f8ca13;
+                padding: 20px;
                 text-align: center;
             }
         }
 
-        @container myContainer (width < 600px) {
-
-            /* .parent:after {
-                content: '< 600px'
-            } */
-            .parent {
-                display: block;
-            }
+        @container (width < 600px) {
 
             .child {
                 width: 100%;
-                background-color: #FF9800;
+                background-color: #57f10f;
                 padding: 30px;
                 border-radius: 3px;
                 margin: 0;
@@ -227,25 +217,22 @@
             }
         }
 
-        @media (orientation: portrait) {
+        /* @media (orientation: portrait) {
 
             .components{
                 margin-top: 0;
             }
             .features{
                 margin-bottom: 0;
-            }
-            .child {
+            } */
+            /* .child {
                 background-color: #099acb;
                 height: 300px;
+            } */
+            /* .parent {
+                background-color: lightpink;
             }
-            .parent {
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-                flex-wrap: wrap;
-            }
-        }
+        } */
     </style>
 </head>
 
