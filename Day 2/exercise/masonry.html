@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masonry Grid Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .masonry-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .masonry-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            transition: 0.3s;
+        }
+
+        .masonry-item:hover {
+            background-color: #3498db;
+            color: #fff;
+            transform: translateY(-10px);
+        }
+
+        .masonry-item:nth-child(odd) {
+            height: 250px;
+            /* Odd items will have this height */
+        }
+
+        .masonry-item:nth-child(even) {
+            height: 300px;
+            /* Even items will have this height */
+        }
+
+        .masonry-item:nth-child(3n) {
+            height: 350px;
+            /* Items divisible by 3 will have this height */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="masonry-container">
+    <div class="masonry-item">Item 1</div>
+    <div class="masonry-item">Item 2</div>
+    <div class="masonry-item">Item 3</div>
+    <div class="masonry-item">Item 4</div>
+    <div class="masonry-item">Item 5</div>
+    <div class="masonry-item">Item 6</div>
+    <div class="masonry-item">Item 7</div>
+    <div class="masonry-item">Item 8</div>
+    <div class="masonry-item">Item 9</div>
+    <div class="masonry-item">Item 10</div>
+  </div> -->
+    <div class="masonry-container">
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=1" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=2" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=3" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=4" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=5" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=6" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=7" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=8" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=9" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=10" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=11" alt=""></div>
+         <div class="masonry-item"><img src="https://picsum.photos/200/200?random=12" alt=""></div>
+        
+    </div>
+
+   
+
+</body>
+
+</html>
