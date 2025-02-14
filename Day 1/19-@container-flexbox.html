@@ -7,7 +7,6 @@
     <style>
         *{
             box-sizing: border-box;
-
         }
         /* Wrapper to control the width */
         .wrapper {
@@ -16,14 +15,12 @@
             margin: auto;
             border: 2px solid black;
             padding: 10px;
-            container-type: inline-size;
-            container-name: wrapper;
         }
 
-        /* Enable container queries */
         @supports (container-type: inline-size) {
-            .parent {
-                
+            .wrapper {
+                container-type: inline-size;
+                container-name: wrapper;
             }
         }
        
