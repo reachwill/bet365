@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Elements</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            opacity: 0;
+            animation: fade-slide-down 1s ease-out forwards;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border-radius: 20px;
+            opacity: 0;
+        }
+
+        .box-left {
+            animation: slide-in-left 1s ease-out forwards 0.5s;
+        }
+
+        .box-right {
+            animation: slide-in-right 1s ease-out forwards 1s;
+        }
+
+        .box-bottom {
+            animation: slide-in-bottom 1s ease-out forwards 1.5s;
+        }
+
+        /* Keyframes Animations */
+        @keyframes fade-slide-down {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-right {
+            from {
+                opacity: 0;
+                transform: translateX(100vw);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-bottom {
+            from {
+                opacity: 0;
+                transform: translateY(100vh);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Animation!</h1>
+    <div class="box box-left"></div>
+    <div class="box box-right"></div>
+    <div class="box box-bottom"></div>
+
+</body>
+</html>

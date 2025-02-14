@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Query with Flexbox</title>
+    <style>
+        *{
+            box-sizing: border-box;
+
+        }
+        /* Wrapper to control the width */
+        .wrapper {
+            width: 50%;
+            max-width: 1000px;
+            margin: auto;
+            border: 2px solid black;
+            padding: 10px;
+            container-type: inline-size;
+            container-name: wrapper;
+        }
+
+        /* Enable container queries */
+        @supports (container-type: inline-size) {
+            .parent {
+                
+            }
+        }
+       
+
+        /* Parent flex container */
+        .parent {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            background-color: lightgray;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Child elements */
+        .child {
+            background-color: steelblue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            /* flex: 1; */
+        }
+
+        /* Container query: Change layout when the parent container shrinks */
+        @container  wrapper (max-width: 500px) {
+            .parent {
+                display: block;
+            }
+            .child {
+                width: 100%;
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="parent">
+            <div class="child">Child 1</div>
+            <div class="child">Child 2</div>
+            <div class="child">Child 3</div>
+        </div>
+    </div>
+</body>
+</html>

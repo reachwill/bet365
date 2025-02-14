@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transition Demo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+
+        .card {
+            width: 200px;
+            height: 250px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 75, 43, 0.6);
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">Hover Me!</div>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Pie Chart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .pie-chart-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(#f0f0f0 0deg 360deg);
+        }
+
+        .pie-chart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: circle(50%);
+            transform: rotate(-90deg);
+            /* Starting angle for the chart */
+        }
+
+        .slice {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: transparent;
+            clip-path: polygon(100% 100%, 100% 0%, 0% 0%, 0% 100%);
+            transform-origin: 100% 100%;
+            transition: transform 1s ease;
+        }
+
+        .slice span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pie-chart-container">
+        <div class="pie-chart" id="pie-chart">
+            <!-- Slices will be inserted here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // Sample JSON data structure
+        const data = [
+            { label: "Red", value: 40, color: "#f44336" },
+            { label: "Blue", value: 30, color: "#2196F3" },
+            { label: "Green", value: 20, color: "#4CAF50" },
+            { label: "Yellow", value: 10, color: "#FFEB3B" }
+        ];
+
+        // Function to calculate and render the pie chart
+        function renderPieChart(data) {
+            const pieChart = document.getElementById('pie-chart');
+            let totalValue = data.reduce((total, item) => total + item.value, 0);
+            let currentAngle = 0;
+
+            data.forEach(item => {
+                const slice = document.createElement('div');
+                slice.classList.add('slice');
+
+                // Calculate the rotation angle for this slice
+                const sliceAngle = (item.value / totalValue) * 360;
+
+                // Create slice animation
+                slice.style.backgroundColor = item.color;
+                slice.style.transform = `rotate(${currentAngle}deg)`;
+
+                // Append the label inside the slice
+                // const label = document.createElement('span');
+                // label.textContent = item.label;
+                // slice.appendChild(label);
+
+                pieChart.appendChild(slice);
+
+                // Update the current angle for the next slice
+                currentAngle += sliceAngle;
+
+                // Trigger the animation after DOM is loaded
+                setTimeout(() => {
+                    slice.style.transform = `rotate(${currentAngle - sliceAngle}deg)`;
+                }, 100);
+            });
+        }
+
+        // Render the pie chart with data
+        renderPieChart(data);
+
+    </script>
+</body>
+
+</html>

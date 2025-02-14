@@ -13,6 +13,7 @@
             padding: 0;
             font-family: Arial, sans-serif;
             height: 100%;
+            box-sizing: border-box;
         }
 
         /* Container styles */
@@ -40,7 +41,7 @@
 
         /* Responsive paragraph using vh */
         .description {
-            font-size: 4vh;
+            font-size: 2vh;
             /* 4% of the viewport height */
             max-width: 800px;
             line-height: 1.5;
@@ -77,6 +78,7 @@
         .card {
             width: min(80%, 800px);
             height: 200px;
+            height: 20vmin;
             /* The width will be 80% of the parent, but no more than 500px */
             padding: min(20px, 5vw);
             /* The padding will be 20px or 5% of the viewport width, whichever is smaller */
@@ -105,6 +107,24 @@
         .large-btn:hover {
             background-color: #00796b;
         }
+
+        .container2{
+            display: flex;
+            justify-content: center;
+        }
+
+        .container2>div {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            height: 300px;
+            width: 50vmin;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -113,8 +133,7 @@
 
         <h1 class="title">Responsive Heading</h1>
         <p class="description">This paragraph demonstrates the use of modern CSS units like vw, vh, clamp, min(),
-            and
-            max(). Resize the window to see how the elements adjust!</p>
+            and max(). Resize the window to see how the elements adjust!</p>
         <button class="resize-btn">Resize Button</button>
 
         <div class="card">
@@ -124,6 +143,13 @@
 
         <button class="large-btn">Large Button</button>
 
+    </div>
+
+    <div class="container2">
+        <div>
+            Container 2 content div
+        </div>
+        
     </div>
 </body>
 

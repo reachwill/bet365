@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Animation from JSON</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            position: relative;
+        }
+        svg {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg id="svgCanvas" width="300" height="300" viewBox="0 0 300 300">
+            <circle id="animatedCircle" cx="50" cy="50" r="20" fill="red" stroke="black" stroke-width="2"></circle>
+        </svg>
+    </div>
+    
+    <script>
+        const animationData = [
+            { x: 50, y: 50, color: "red" },
+            { x: 250, y: 50, color: "blue" },
+            { x: 250, y: 250, color: "green" },
+            { x: 50, y: 250, color: "purple" }
+        ];
+
+        let index = 0;
+        let circle = document.getElementById("animatedCircle");
+
+        function animateCircle() {
+            let data = animationData[index];
+            let nextIndex = (index + 1) % animationData.length;
+            let nextData = animationData[nextIndex];
+            
+            let animation = circle.animate([
+                { cx: data.x, cy: data.y, fill: data.color },
+                { cx: nextData.x, cy: nextData.y, fill: nextData.color }
+            ], {
+                duration: 1000,
+                fill: "forwards"
+            });
+            
+            animation.onfinish = () => {
+                circle.setAttribute("cx", nextData.x);
+                circle.setAttribute("cy", nextData.y);
+                circle.setAttribute("fill", nextData.color);
+                index = nextIndex;
+                setTimeout(animateCircle, 1000);
+            };
+        }
+        
+        animateCircle();
+    </script>
+</body>
+</html>
