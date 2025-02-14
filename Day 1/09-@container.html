@@ -1,105 +1,70 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Query Demo</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            height: 100vh;
         }
-
-        .wrapper {
-            width: 80%;
-            /* Initially, the container is 80% of the viewport */
-            max-width: 1200px;
-            padding: 20px;
-        }
-
-        .parent {
-            /* container-name: myContainer; */
+        /* Enable container queries */
+        .card-container {
             container-type: inline-size;
-            background-color: aqua;
-        }
-        .parent2 {
-            container-name: parent2;
-            container-type: inline-size;
+            width: 60%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ddd;
         }
 
-        .child {
-            width: 100%;
-            /* Takes 100% of the container */
-            background-color: #4CAF50;
-            color: white;
+        /* Base styling for the card */
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             padding: 20px;
+            background: #f9f9f9;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        /* Add styles if myContainer is less than 500px wide */
-        @container parent2 (width < 500px) {
-            .child {
-                width: 50%;
-                border: 2px solid maroon;
-                background-color: salmon;
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: auto;
+        }
+
+        /* Apply container query for wider containers */
+        @container (min-width: 500px) {
+            .card {
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
             }
-        }
-
-        @container  (min-width: 500px) {
-            .child {
-                width: 70%;
-                background-color: #FF9800;
-                padding: 30px;
-            }
-        }
-
-        @container  (min-width: 800px) {
-            .child {
-                width: 60%;
-                background-color: #2196F3;
-                padding: 40px;
-            }
-        }
-
-        /* Container query for even larger sizes */
-        @container  (min-width: 1000px) {
-            .child {
-                width: 50%;
-                background-color: #009688;
-                padding: 50px;
+            .card img {
+                margin: 0;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <div class="wrapper">
-
-
-
-        <h1>Demo of @container</h1>
-
-        <p>Resize the page to see the effect.</p>
-
-        <div class="parent">
-            <div class="child">
-                <h2>A header</h2>
-                <p>Some text.</p>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://picsum.photos/200/200?random=1" alt="Profile">
+            <div>
+                <h2>John Doe</h2>
+                <p>Web Developer & Designer</p>
             </div>
         </div>
-
-        <div class="parent2">
-            <div class="child">
-                <h2>A header</h2>
-                <p>Some text.</p>
-            </div>
-        </div>
-
-
     </div>
 </body>
-
 </html>
