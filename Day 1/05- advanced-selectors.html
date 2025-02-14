@@ -12,68 +12,23 @@
 
         .wrapper {
             max-width: 400px;
-            padding: 10px;
+            padding: 40px;
+            margin: auto;
+            background-color: #faf7f7;
+            border-radius: 2rem;
+            box-shadow:  2px 2px 13px 3px rgba(0, 0, 0, 0.2);
         }
 
-        /* Advanced CSS Selectors */
-        /* :not() - Exclude specific elements */
-        /* p:not(.special) {
-            color: blue;
-        } */
-
-        /* :nth-child() - Select elements based on position */
-        li:nth-child(odd) {
-            background-color: lightgray;
-        }
-
-        li::after {
-            content: ' -> ';
-            font-weight: bold;
-        }
-
-        /* :has() - Select parent elements containing a specific child (supported in modern browsers) */
-        div:has(span.highlight) {
-            border: 2px solid red;
-        }
-
-        /* :is() - Adjust specificity */
-        /* .box:is(.primary, .secondary) {
-            padding: 10px;
+        button {
+            padding: 20px;
             border-radius: 5px;
-        } */
-
-        /* :where() - Zero specificity */
-        /* :where(.container p) {
-            font-size: 16px;
-        } */
-
-        /* Combination selectors and pseudo-elements */
-        /* Child combinator (>) */
-        .nav>li {
-            list-style: none;
+            border: none;
+            background-color: lightgray !important;
         }
-
-        /* Adjacent sibling (+) */
-        h2+p {
-            font-style: italic;
-        }
-
-        /* General sibling (~) */
-        .note~p {
-            color: green;
-        }
-
-        /* Pseudo-elements */
-        p::first-letter {
-            font-size: 1.2em;
-            color: red;
-        }
-
-        
 
         /* Debugging specificity issues */
         .btn {
-            background-color: blue !important;
+            background-color: #0fc7f1 ;
             /* Overrides other rules */
         }
 
@@ -86,53 +41,132 @@
             background-color: green;
             /* Higher specificity than .btn */
         }
+
+        .prices-list li{
+            padding: 10px;
+        }
+
+        /* :nth-child() - Select elements based on position */
+        .prices-list li:nth-child(odd) {
+            background-color: lightgray;
+        }
+
+        .prices-list li::before {
+            content: '£';
+        }
+
+        /* Combination selectors and pseudo-elements */
+        /* Child combinator (>) */
+        .nav>li {
+            list-style: none;
+        }
+
+        /* :has() - Select parent elements containing a specific child (supported in modern browsers) */
+        /* Do without descendent selector first!!!!!!!!!!! */
+        div:has(>span.highlight) {
+            padding: 20px;
+            border: 2px solid red;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .nav li::marker{
+            content: '+ ';
+            font-size: 1.2em;
+            color: green
+        }
+
+        /* .nav li:has(ul)::marker {
+            content: '+ ';
+            font-size: 1.2em;
+            color: green
+        } */
+
+        /* Adjacent sibling (+) */
+        h2 {
+            margin-bottom: 0;
+        }
+
+        h2+p {
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        h2+p::before,
+        h2+p:after {
+            content: '"';
+            /* font-weight: bold; */
+        }
+
+        /* Pseudo-elements */
+        .post-content  p:nth-child(1)::first-letter {
+            font-size: 2em;
+            letter-spacing: .15rem;
+            color: #666161;
+        }
+
+         /* General sibling (~) */
+         .note~p {
+            margin-left: 30px;
+        }
+
+        a[href$=pdf]:after {
+            content: ' (PDF)';
+        }
     </style>
 </head>
 
 <body>
-    
+
     <div class="wrapper">
 
+        <button class="btn">Click Me</button>
+        <button id="unique-btn" class="btn">Unique Button</button>
 
-        <p class="special">This paragraph is special.</p>
-        <p>This paragraph is not special.</p>
 
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+        <!-- <p class="special">This paragraph is special.</p> -->
+        <!-- <p>This paragraph is not special.</p> -->
+
+
+        
+        <ul class="prices-list">
+            <li>29.00</li>
+            <li>32.00</li>
+            <li>44.56</li>
+            <li>52.66</li>
+        </ul>
+
+        <ul class="nav">
+            <li>Nav Item 1
+                <ul class="submenu">
+                    <li>Sub Nav 1</li>
+                    <li>Sub Nav 2</li>
+                </ul>
+            </li>
+            <li>Nav Item 2</li>
         </ul>
 
         <div>
             <span class="highlight">Highlighted span inside div</span>
         </div>
-        <div>
-            Regular div content.
-        </div>
 
-        <div class="box primary">Primary Box</div>
-        <div class="box secondary">Secondary Box</div>
-
-        <div class="container">
-            <p>Container paragraph.</p>
-        </div>
-
-        <ul class="nav">
-            <li>Nav Item 1</li>
-            <li>Nav Item 2</li>
-        </ul>
 
         <h2>Heading</h2>
         <p>Paragraph after heading.</p>
 
-        <p>A paragraph before the note.</p>
-        <p class="note">This is a note.</p>
-        <p>Another paragraph after the note.</p>
-        <p>Another paragraph after the note.</p>
+        <div class="post-content">
+            <p>A paragraph before the note.</p>
+            <p class="note">This is a note.</p>
+            <p>A paragraph after the note.</p>
+            <p>Another paragraph after the note.</p>
+        </div>
 
-        <button class="btn">Click Me</button>
-        <button id="unique-btn" class="btn">Unique Button</button>
+        <div>
+            <a href="bbc.co.uk">Contact</a> | 
+            <a href="dummy.pdf">Terms an Conditions</a>
+        </div>
+
     </div>
 </body>
 

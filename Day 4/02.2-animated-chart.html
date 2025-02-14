@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Chart</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .chart-container {
+            width: 80%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            border: 2px solid #ccc;
+            background-color: #fff;
+        }
+
+        .chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bar {
+            width: 30px;
+            background-color: #4caf50;
+            height: 0;
+            transition: height 1s ease-in-out;
+        }
+
+        .bar span {
+            display: block;
+            color: rgb(26, 103, 236);
+            text-align: center;
+            padding: 5px;
+            position: relative;
+            bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart-container">
+        <div class="chart">
+            <!-- Dynamic bars will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // JSON data structure
+        const data = [
+            { label: "Jan", value: 50 },
+            { label: "Feb", value: 70 },
+            { label: "Mar", value: 40 },
+            { label: "Apr", value: 90 },
+            { label: "May", value: 60 },
+            { label: "Jun", value: 30 }
+        ];
+
+        // Function to render the chart
+        function renderChart(data) {
+            const chart = document.querySelector('.chart');
+
+            data.forEach(item => {
+                const bar = document.createElement('div');
+                bar.classList.add('bar');
+                bar.style.height = '0'; // Start from 0 height for animation
+
+                // Add the label on top of the bar
+                const label = document.createElement('span');
+                label.textContent = item.label;
+                bar.appendChild(label);
+
+                // Append the bar to the chart
+                chart.appendChild(bar);
+
+                // Trigger the animation after the DOM is loaded
+                setTimeout(() => {
+                    bar.style.height = `${item.value}%`; // Animate to the value height
+                }, 100);
+            });
+        }
+
+        // Call renderChart function
+        renderChart(data);
+
+    </script>
+</body>
+
+</html>

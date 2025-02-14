@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Touch & Mouse Interaction</title>
+    <style>
+        svg {
+            border: 1px solid #000;
+            touch-action: none; /* Prevents scrolling while dragging */
+        }
+    </style>
+</head>
+<body>
+    <svg id="svgCanvas" width="500" height="300">
+        <rect width="100%" height="100%" fill="lightgray"></rect>
+        <circle id="movingCircle" cx="250" cy="150" r="20" fill="blue" stroke="black" stroke-width="2"></circle>
+    </svg>
+    
+    <script>
+        let svg = document.getElementById("svgCanvas");
+        let circle = document.getElementById("movingCircle");
+        let isDragging = false;
+
+        function startDrag(event) {
+            isDragging = true;
+            event.preventDefault(); // Prevents scrolling on mobile
+        }
+
+        function drag(event) {
+            if (!isDragging) return;
+
+            let rect = svg.getBoundingClientRect();
+            let x, y;
+
+            if (event.touches) {
+                x = event.touches[0].clientX - rect.left;
+                y = event.touches[0].clientY - rect.top;
+            } else {
+                x = event.clientX - rect.left;
+                y = event.clientY - rect.top;
+            }
+
+            circle.setAttribute("cx", x);
+            circle.setAttribute("cy", y);
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        circle.addEventListener("mousedown", startDrag);
+        svg.addEventListener("mousemove", drag);
+        svg.addEventListener("mouseup", endDrag);
+
+        // Touch events for mobile support
+        circle.addEventListener("touchstart", startDrag);
+        svg.addEventListener("touchmove", drag);
+        svg.addEventListener("touchend", endDrag);
+    </script>
+</body>
+</html>
