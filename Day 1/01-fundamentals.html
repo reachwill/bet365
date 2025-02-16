@@ -9,14 +9,16 @@
         /* CSS Fundamentals */
         body {
             font-family: Arial, sans-serif;
+            font-size: 16px;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             line-height: 1.6;
+            /* font-size: clamp(1rem, 2.5vw, 1.5rem);  */
         }
 
-        header,
-        footer {
+        #main-header,
+        #footer {
             background: #333;
             color: white;
             text-align: center;
@@ -58,18 +60,26 @@
         }
 
         aside {
-            background: #ddd;
+            /* background: #ddd; */
+
+            background: linear-gradient(to right, rgba(178, 176, 176, 0.5), rgba(92, 92, 93, 0.5));
+            /* background: conic-gradient(red 0deg 90deg, yellow 90deg 180deg, green 180deg 270deg, blue 270deg 360deg); */
+            /* background: repeating-linear-gradient(45deg, red 0px, red 10px, blue 10px, blue 20px); */
+            background: url(https://picsum.photos/300/200?grayscale) no-repeat;
+            background-size: contain;
+            color: white;
             padding: 15px;
             margin: 20px 0;
         }
 
         figure {
             margin: 20px 0;
-            text-align: center;
+            /* text-align: center; */
+            width: 50%;
         }
 
         figure img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
         }
 
@@ -81,20 +91,37 @@
             margin-top: 20px;
         }
 
-        .p-style-1{
+        article header h1 {
+            border-bottom: 1px solid #333;
+            line-height: 1;
+        }
+
+        article footer p {
+            font-style: italic;
+        }
+
+        .content {
+            column-count: 2;
+            line-height: 2;
+        }
+
+        .content p:first-child {
+            margin-top: 0;
+        }
+
+        .p-style-1 {
             color: rgb(9, 138, 237);
         }
 
-        #main-p{
+        #main-p {
             color: rgb(241, 27, 209);
         }
-
     </style>
 </head>
 
 <body>
     <!-- Semantic HTML Structure -->
-    <header>
+    <header id="main-header">
         <h1>Welcome to HTML5 & CSS Fundamentals</h1>
     </header>
     <nav>
@@ -111,16 +138,71 @@
         </section>
         <section id="articles">
             <article id="about">
-                <h1>About HTML5</h1>
-                <p class="p-style-1" id="main-p">HTML5 introduced new semantic elements that help structure web pages more meaningfully.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto atque neque dolores quia odit, aperiam
-                    ab minima cumque. Praesentium minus omnis dignissimos commodi illum unde consequuntur consequatur et
-                    laborum. Culpa.</p>
+                <header>
+                    <h1>About HTML5</h1>
+                </header>
+                <div class="content">
+                    <p class="p-style-1" id="main-p">HTML5 introduced new semantic elements that help structure web
+                        pages
+                        more meaningfully.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus delectus reprehenderit earum
+                        mollitia
+                        enim. Temporibus, voluptatum dignissimos saepe deleniti incidunt error, aliquid accusamus neque
+                        at
+                        aperiam placeat nisi ratione labore.</p>
+                    <p>Temporibus aliquam dolorem cum, aut ad maiores nostrum alias iusto tempore repellat blanditiis
+                        quis,
+                        laborum porro totam sed architecto enim commodi dolorum consequatur quibusdam aspernatur ut nemo
+                        consequuntur magnam! Corrupti?</p>
+                    <p>Accusantium nesciunt quae iure corporis non ut ipsa aperiam repudiandae optio praesentium sequi
+                        alias
+                        doloremque veritatis voluptates, in iusto. Maxime libero, ipsa temporibus dolor officia adipisci
+                        provident fuga praesentium modi.</p>
+                    <p>Iusto molestiae veritatis consequuntur dolor minus vero, in perspiciatis et vitae reiciendis
+                        dolores
+                        eum, at laborum corporis quidem cumque ad tenetur adipisci fuga unde placeat sequi. Ducimus
+                        similique corrupti perspiciatis?</p>
+                    <p>Repellendus, alias consequatur? Quasi delectus, repellendus fugit expedita perferendis magni
+                        rerum
+                        magnam molestiae facere sequi sapiente. Corrupti nulla sequi nam reprehenderit culpa, saepe
+                        necessitatibus odit dolor minus numquam debitis. Ipsa.</p>
+                    <p>Architecto fugiat ipsam aspernatur natus tempora aut nam obcaecati. In libero dicta doloremque
+                        possimus adipisci dolorum consectetur ut voluptatem molestias consequuntur, nulla eligendi iste
+                        officiis quia voluptatum repudiandae impedit qui!</p>
+                    <p>Totam, eaque nesciunt! Facere, distinctio molestias nisi consequatur qui laborum perspiciatis
+                        vero
+                        rem facilis id, autem veniam quos. Tempora consectetur dolorum eos perspiciatis corporis nisi id
+                        architecto sint esse cum?</p>
+                    <p>Ut molestiae necessitatibus cum. Itaque vero minima unde iste. Suscipit architecto delectus amet
+                        fugit corporis nemo? Beatae asperiores nihil fugiat enim quaerat libero officia doloribus sequi
+                        nemo
+                        id, perferendis amet.</p>
+                    <p>Animi nam voluptatibus nihil vitae? Eligendi iure provident incidunt, commodi officia esse
+                        quidem?
+                        Fugiat culpa soluta, saepe cum numquam eligendi asperiores fugit consectetur delectus! Deleniti
+                        iure
+                        necessitatibus reprehenderit quisquam voluptate!</p>
+                    <p>Eligendi sunt non quibusdam harum architecto cupiditate et molestiae repellendus! Dolor dolorum
+                        illo,
+                        deserunt minus a saepe aliquam obcaecati eveniet aperiam culpa eaque distinctio! Repellat optio
+                        nostrum aut vitae nesciunt.</p>
+                    <p>Delectus inventore, alias deleniti qui ducimus sit accusantium sint esse vitae cupiditate nihil
+                        ab
+                        ratione ea cumque maiores harum at corrupti vel laborum explicabo beatae? Iure doloribus
+                        voluptas
+                        eos in.</p>
+                    <p>Molestiae excepturi ea voluptas consequuntur odit, iste aliquam eaque beatae sed esse repellendus
+                        dolorum fugit sit repudiandae vel id, ratione sapiente accusamus, totam soluta amet? Porro modi
+                        nulla blanditiis dolorem!</p>
+                </div>
+                <footer>
+                    <p>&copy 2025 Published on: <time datetime="2024-02-16">February 16, 2025</time></p>
+                </footer>
             </article>
         </section>
         <section id="features">
             <h1>HTML5 Features</h1>
-            <p  class="p-style-1">Some new elements include:</p>
+            <p class="p-style-1">Some new elements include:</p>
             <ul>
                 <li><code>&lt;header&gt;</code>: Defines introductory content.</li>
                 <li><code>&lt;footer&gt;</code>: Represents footer section.</li>
@@ -130,15 +212,18 @@
             </ul>
         </section>
         <aside>
-            <h2>Related Information</h2>
+            <header>
+                <h1>Related Information</h1>
+            </header>
             <p>Aside content can be used for additional information such as related links, ads, or callout boxes.</p>
+            <figure>
+                <img src="https://picsum.photos/300/200?grayscale" alt="Example Image">
+                <figcaption>An example of an HTML5 figure element with an image and caption.</figcaption>
+            </figure>
         </aside>
-        <figure>
-            <img src="https://picsum.photos/300/200?grayscale" alt="Example Image">
-            <figcaption>An example of an HTML5 figure element with an image and caption.</figcaption>
-        </figure>
+        
     </main>
-    <footer>
+    <footer #footer>
         <p>&copy; 2025 HTML5 & CSS Workshop</p>
     </footer>
 </body>
