@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Fetched JSON Data</h2>
+        <button onclick="fetchData()">Load Data</button>
+        <pre id="output">Click the button to fetch data...</pre>
+    </div>
+    
+    <script>
+        async function fetchData() {
+            const url = "https://picsum.photos/v2/list?page=1&limit=50"; // Example API
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.text();
+                console.log(data);
+                
+                document.getElementById("output").textContent = JSON.stringify(JSON.parse(data), null, 2);
+            } catch (error) {
+                document.getElementById("output").textContent = "Error fetching data: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

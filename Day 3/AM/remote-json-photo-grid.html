@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin-top: 20px;  }
+        .grid img { width: 100%; height: auto; border-radius: 5px; }
+        figcaption{
+            font-size: 1rem;
+            text-align: center;
+        }
+        /* .photo{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Fetched Photos</h2>
+        <button onclick="fetchPhotos()">Load Photos</button>
+        <button onclick="sortPhotos()">Sort by Author</button>
+        <div class="grid" id="photoGrid"></div>
+    </div>
+    
+    <script>
+        let photos = []; // Store fetched photos globally
+        
+        async function fetchPhotos() {
+            const url = "https://picsum.photos/v2/list?page=1&limit=50"; // Fetch 50 photos from Lorem Picsum
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                photos = await response.json();
+                displayPhotos(photos);
+            } catch (error) {
+                document.getElementById("photoGrid").innerHTML = "Error fetching photos: " + error.message;
+            }
+        }
+        
+        function sortPhotos() {
+            photos.sort((a, b) => a.author.localeCompare(b.author));
+            displayPhotos(photos);
+        }
+        
+        function displayPhotos(photoArray) {
+            const grid = document.getElementById("photoGrid");
+            grid.innerHTML = photoArray.map(photo => `
+                <div class="photo">
+                    <figure>
+                        <img src="${photo.download_url}" alt="Random Image" title="${photo.author}">
+                        <figcaption>${photo.author}</figcaption>
+                    </figure>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

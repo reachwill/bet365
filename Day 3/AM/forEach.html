@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array.forEach Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .item {
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .highlight {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Array.forEach Demo</h1>
+    <div id="list"></div>
+    <button onclick="highlightItems()">Highlight Items</button>
+    
+    <script>
+        const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+        const listDiv = document.getElementById('list');
+
+        // Create list elements
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.textContent = item;
+            listDiv.appendChild(div);
+        });
+
+        function highlightItems() {
+            const elements = document.querySelectorAll('.item');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('highlight');
+                }, index * 500);
+            });
+        }
+    </script>
+</body>
+</html>

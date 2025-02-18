@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; text-align: center; }
+        .controls { margin-bottom: 10px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .list .photo {
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+        }
+
+        .grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .list img {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        figcaption {
+            font-size: 1rem;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .lightbox.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Fetched Photos</h2>
+        <div class="controls">
+            <button onclick="fetchPhotos()">Load Photos</button>
+            <button onclick="sortPhotos()">Sort by Author</button>
+            <button onclick="toggleView()">Toggle View</button>
+        </div>
+        <div class="grid" id="photoGrid"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">×</span>
+        <img id="lightboxImage" src="" alt="Large Preview">
+    </div>
+    
+    <script>
+        let photos = []; // Store fetched photos globally
+        let isGridView = true; // Track current view mode
+
+        async function fetchPhotos() {
+            const url = "https://picsum.photos/v2/list?page=1&limit=50"; // Fetch 50 photos from Lorem Picsum
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                photos = await response.json();
+                displayPhotos(photos);
+            } catch (error) {
+                document.getElementById("photoGrid").innerHTML = "Error fetching photos: " + error.message;
+            }
+        }
+
+        function sortPhotos() {
+            photos.sort((a, b) => a.author.localeCompare(b.author));
+            displayPhotos(photos);
+        }
+
+        function displayPhotos(photoArray) {
+            const grid = document.getElementById("photoGrid");
+            grid.className = isGridView ? "grid" : "list"; // Toggle between grid and list classes
+
+            grid.innerHTML = photoArray.map(photo => `
+                <div class="photo"  onclick="openLightbox('${photo.download_url}')">
+                    <figure>
+                        <img src="${photo.download_url}" alt="Random Image" title="${photo.author}">
+                        <figcaption>${photo.author}</figcaption>
+                    </figure>
+                </div>
+            `).join('');
+        }
+
+        function toggleView() {
+            isGridView = !isGridView;
+            displayPhotos(photos);
+        }
+
+        function openLightbox(imageUrl) {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImage = document.getElementById("lightboxImage");
+            lightboxImage.src = imageUrl;
+            lightbox.classList.add("show");
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").classList.remove("show");
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById("lightbox").addEventListener("click", (e) => {
+            if (e.target === document.getElementById("lightbox")) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
