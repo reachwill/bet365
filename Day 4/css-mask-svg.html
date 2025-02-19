@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Spotlight Mask</title>
+    <style>
+        body {
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .spotlight {
+            width: 400px;
+            height: 400px;
+            background-image: url('Day 2/exercise/masonry.html');
+            background-size: cover;
+            background-position: center;
+            mask-image: radial-gradient(circle 80px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: radial-gradient(circle 80px at var(--x, 50%) var(--y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+            animation: moveSpotlight 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveSpotlight {
+            0% {
+                --x: 10%;
+                --y: 20%;
+            }
+            25% {
+                --x: 80%;
+                --y: 30%;
+            }
+            50% {
+                --x: 50%;
+                --y: 70%;
+            }
+            75% {
+                --x: 20%;
+                --y: 50%;
+            }
+            100% {
+                --x: 90%;
+                --y: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spotlight"></div>
+</body>
+</html>

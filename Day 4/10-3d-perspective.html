@@ -22,31 +22,31 @@
 
         canvas {
             display: block;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/d/de/Football_field.svg') no-repeat center;
-            background-size: cover;
         }
-
-        /* @supports (transform: translateY(-50%)) {
-            .foo {
-                position: relative;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-        } */
-         
     </style>
 </head>
 
 <body>
-    
-        <div class="field-container">
-            <canvas id="soccerField" width="600" height="400"></canvas>
-        </div>
-   
-    
+
+    <div class="field-container">
+        <canvas id="soccerField" width="1200" height="800"></canvas>
+    </div>
+
+
     <script>
+        
         const canvas = document.getElementById("soccerField");
         const ctx = canvas.getContext("2d");
+
+        // Create a new image element
+        var img = new Image();
+        img.src = 'https://cdn.pixabay.com/photo/2013/07/12/12/29/soccer-145794_1280.png'; 
+
+        // Once the image is loaded, draw it on the canvas
+        img.onload = function () {
+            // Draw the image to cover the entire canvas
+            ctx.drawImage(img, -50, -50, canvas.width+100, canvas.height+100);
+        };
 
         const ball = {
             x: 100,
@@ -68,11 +68,13 @@
         }
 
         function update() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, -70, -50, canvas.width+130, canvas.height+100);
             drawBall();
 
             ball.x += ball.dx;
             ball.y += ball.dy;
+            //recordArray.push({ballX: ball.x, ballY:ball.y});
 
             if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width) {
                 ball.dx *= -1;

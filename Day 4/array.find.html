@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Example</title>
+</head>
+<body>
+    <h2>Users Whose Name Starts with "D"</h2>
+    <ul id="user-list"></ul>
+
+    <script>
+        // Array of objects representing users
+        const users = [
+            { name: "Alice", age: 25 },
+            { name: "Bob", age: 17 },
+            { name: "Charlie", age: 30 },
+            { name: "David", age: 16 },
+            { name: "Diana", age: 22 }
+        ];
+
+        // Use filter() to get all users whose name starts with "D"
+        const usersStartingWithD = users.filter(user => user.name.startsWith("D"));
+
+        // Get the list element from the HTML
+        const userList = document.getElementById("user-list");
+
+        // Loop through the filtered array and create list items
+        usersStartingWithD.forEach(user => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${user.name}, Age: ${user.age}`;
+            userList.appendChild(listItem);
+        });
+
+        // If no users found, display a message
+        if (usersStartingWithD.length === 0) {
+            const listItem = document.createElement("li");
+            listItem.textContent = "No users found whose name starts with 'D'.";
+            userList.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>

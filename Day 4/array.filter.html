@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Example</title>
+</head>
+<body>
+    <h2>Adults (18 or older)</h2>
+    <ul id="user-list"></ul>
+
+    <script>
+        // Array of objects representing users
+        const users = [
+            { name: "Alice", age: 25 },
+            { name: "Bob", age: 17 },
+            { name: "Charlie", age: 30 },
+            { name: "David", age: 16 },
+            { name: "Emma", age: 22 }
+        ];
+
+        // Use filter() to get users who are 18 or older
+        const adults = users.filter(user => user.age >= 18);
+
+        // Get the list element from the HTML
+        const userList = document.getElementById("user-list");
+
+        // Loop through the filtered adults array and create list items
+        adults.forEach(user => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${user.name}, Age: ${user.age}`;
+            userList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

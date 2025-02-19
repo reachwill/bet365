@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive 3D Soccer Ball Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: green;
+            overflow: hidden; /* Prevents scrolling */
+            perspective: 800px;
+        }
+
+        .field-container {
+            transform: rotateX(65deg) scale(50%);
+            border: 5px solid white;
+        }
+
+        canvas {
+            display: block;
+            width: 90vw; /* Full width */
+            height: 90vh; /* Full height */
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="field-container">
+        <canvas id="soccerField"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("soccerField");
+        const ctx = canvas.getContext("2d");
+
+        // Function to set canvas size dynamically
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * 0.5; // Adjust width (90% of viewport)
+            canvas.height = window.innerHeight * 0.4; // Adjust height (70% of viewport)
+        }
+
+        resizeCanvas(); // Set initial size
+
+        window.addEventListener("resize", () => {
+            resizeCanvas(); // Resize when window resizes
+            drawBackground(); // Redraw the background
+        });
+
+        // Load the football field image
+        const img = new Image();
+        //img.src = 'https://cdn.pixabay.com/photo/2013/07/12/12/29/soccer-145794_1280.png';
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+
+        img.onload = drawBackground; // Draw once the image loads
+
+        const ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: canvas.width * 0.02, // Scales with screen size
+            dx: canvas.width * 0.005,
+            dy: canvas.height * 0.005
+        };
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "white";
+            ctx.fill();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        function update() {
+            drawBackground();
+            drawBall();
+
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width) {
+                ball.dx *= -1;
+            }
+            if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.dy *= -1;
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        update();
+    </script>
+
+</body>
+</html>

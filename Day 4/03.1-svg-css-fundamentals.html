@@ -135,7 +135,45 @@
         </style>
 
 
-        
+        <!-- Animated dashed line -->
+        <style>
+            body {
+                background-color: #222;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+    
+            svg {
+                width: 400px;
+                height: 100px;
+            }
+    
+            .dotted-line {
+                fill: none;
+                stroke: #00ffcc;
+                stroke-width: 4;
+                stroke-linecap: round;
+                stroke-dasharray: 5, 10; /* Dotted pattern (dot, space) */
+                stroke-dashoffset: 0;
+                animation: moveDashes 2s linear infinite;
+            }
+    
+            @keyframes moveDashes {
+                from {
+                    stroke-dashoffset: 0;
+                }
+                to {
+                    stroke-dashoffset: -30; /* Moves the dashes */
+                }
+            }
+        </style>
+
+<svg viewBox="0 0 400 100">
+    <line class="dotted-line" x1="20" y1="50" x2="380" y2="50"/>
+</svg>
          
 
        
