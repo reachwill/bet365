@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG ViewBox Examples</title>
+  <style>
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    svg {
+      border: 1px solid black;
+    }
+    .responsive {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>SVG Without ViewBox</h2>
+  <div class="container">
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="50" fill="skyblue" />
+    </svg>
+  </div>
+
+  <h2>SVG With ViewBox</h2>
+  <div class="container">
+    <svg width="200" height="200" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="25" fill="lightgreen" />
+    </svg>
+  </div>
+
+  <h2>Responsive SVG With ViewBox</h2>
+  <div class="container">
+    <svg viewBox="0 0 100 100" class="responsive">
+      <circle cx="50" cy="50" r="25" fill="coral" />
+    </svg>
+  </div>
+</body>
+</html>

@@ -40,7 +40,7 @@
         }
 
         .bar {
-            width: 30px;
+            width: 18%;
             background-color: #4caf50;
             height: 0;
             transition: height 1s ease-in-out;
@@ -75,18 +75,24 @@
             { label: "Jun", value: 30 }
         ];
 
+        const colors = ['#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0', '#f44336'];
+
+
         // Function to render the chart
         function renderChart(data) {
             const chart = document.querySelector('.chart');
 
-            data.forEach(item => {
+            data.forEach((item, index) => {
                 const bar = document.createElement('div');
                 bar.classList.add('bar');
                 bar.style.height = '0'; // Start from 0 height for animation
+                bar.style.backgroundColor = colors[index % colors.length];
 
                 // Add the label on top of the bar
-                const label = document.createElement('span');
+                const label = document.createElement('div');
                 label.textContent = item.label;
+                label.style.color = 'white';
+                label.style.color = 'white';
                 bar.appendChild(label);
 
                 // Append the bar to the chart
@@ -95,7 +101,7 @@
                 // Trigger the animation after the DOM is loaded
                 setTimeout(() => {
                     bar.style.height = `${item.value}%`; // Animate to the value height
-                }, 100);
+                }, 100+index*100); // Delay each bar animation by 1 second
             });
         }
 
