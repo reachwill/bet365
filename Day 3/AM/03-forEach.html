@@ -25,12 +25,12 @@
 <body>
     <h1>Array.forEach Demo</h1>
     <div id="list"></div>
-    <button onclick="highlightItems()">Highlight Items</button>
+    <button id="highlight-btn" >Highlight Items</button>
     
     <script>
         const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
         const listDiv = document.getElementById('list');
-
+        document.getElementById('highlight-btn').addEventListener('click', highlightItems);
         // Create list elements
         items.forEach(item => {
             const div = document.createElement('div');
@@ -45,6 +45,9 @@
                 setTimeout(() => {
                     el.classList.add('highlight');
                 }, index * 500);
+                // setTimeout(() => {
+                //     el.classList.add('highlight');
+                // }, index * 500);
             });
         }
     </script>
