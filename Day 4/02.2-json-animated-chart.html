@@ -46,12 +46,12 @@
             transition: height 1s ease-in-out;
         }
 
-        .bar span {
+        .bar div {
             display: block;
             color: rgb(26, 103, 236);
             text-align: center;
             padding: 5px;
-            position: relative;
+            /* position: relative; */
             bottom: 20px;
         }
     </style>
@@ -92,7 +92,7 @@
                 const label = document.createElement('div');
                 label.textContent = item.label;
                 label.style.color = 'white';
-                label.style.color = 'white';
+                
                 bar.appendChild(label);
 
                 // Append the bar to the chart
@@ -101,7 +101,7 @@
                 // Trigger the animation after the DOM is loaded
                 setTimeout(() => {
                     bar.style.height = `${item.value}%`; // Animate to the value height
-                }, 100+index*100); // Delay each bar animation by 1 second
+                }, 100+index*500); // Delay each bar animation by 1 second
             });
         }
 
